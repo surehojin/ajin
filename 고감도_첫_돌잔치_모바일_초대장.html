@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>소중한 김아진의 첫 번째 생일</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Gowun Batang (우아한 명조), Noto Serif KR, Pretendard -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Gowun+Batang:wght@400;700&amp;family=Noto+Serif+KR:wght@300;400;500;600&amp;family=Pretendard:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web" crossorigin="anonymous"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/thin/style.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/light/style.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/duotone/style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        ivory: '#F7F3EB',
+                        sand: '#EAE2D6',
+                        warmbrown: '#5C4D42',
+                        deepbrown: '#3A2E26',
+                        mutedbrown: '#8C7B6E',
+                        sage: '#8FA38A',
+                        blush: '#E8C5B8',
+                        gold: '#C8A97E'
+                    },
+                    fontFamily: {
+                        serif: ['"Gowun Batang"', '"Noto Serif KR"', 'serif'],
+                        eng: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Pretendard"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #EBE5DC;
+            color: #3A2E26;
+            font-family: 'Gowun Batang', serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Paper Texture Overlay */
+        .paper-texture {
+            background-color: #FDFBF7;
+            background-image: radial-gradient(#D5C7B8 0.45px, transparent 0.45px), radial-gradient(#E5DEC9 0.45px, #FDFBF7 0.45px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+        }
+
+        /* Arch Frame for Main Photo */
+        .arch-frame {
+            border-radius: 220px 220px 24px 24px;
+            box-shadow: 0 20px 40px -15px rgba(92, 77, 66, 0.15);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Editable Highlight when in Edit Mode */
+        .edit-mode [contenteditable="true"] {
+            outline: 1.5px dashed #C8A97E;
+            background-color: rgba(200, 169, 126, 0.08);
+            border-radius: 6px;
+            padding: 2px 6px;
+            cursor: text;
+            transition: all 0.2s ease;
+        }
+        .edit-mode [contenteditable="true"]:focus {
+            outline: 2px solid #5C4D42;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDFBF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D8CFC4;
+            border-radius: 9999px;
+        }
+
+        /* Floating Petals Canvas */
+        #petal-canvas {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 30;
+        }
+
+        /* Soft Pulse Animation */
+        @keyframes softBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-soft-bounce {
+            animation: softBounce 3s ease-in-out infinite;
+        }
+
+        /* Shimmer effect for primary button */
+        .btn-warm {
+            background: linear-gradient(135deg, #6E5D50 0%, #4E3F35 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-warm:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px -6px rgba(78, 63, 53, 0.4);
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:"Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.-inset-2\.5{inset:-0.625rem}.inset-0{inset:0px}.inset-x-0{left:0px;right:0px}.bottom-0{bottom:0px}.bottom-4{bottom:1rem}.bottom-6{bottom:1.5rem}.left-1\/2{left:50%}.left-2{left:0.5rem}.left-5{left:1.25rem}.right-2{right:0.5rem}.right-4{right:1rem}.right-5{right:1.25rem}.top-3{top:0.75rem}.top-4{top:1rem}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}.mx-3{margin-left:0.75rem;margin-right:0.75rem}.mx-auto{margin-left:auto;margin-right:auto}.my-4{margin-top:1rem;margin-bottom:1rem}.mb-0\.5{margin-bottom:0.125rem}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-7{margin-bottom:1.75rem}.mr-1\.5{margin-right:0.375rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-1\.5{margin-top:0.375rem}.mt-10{margin-top:2.5rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-7{margin-top:1.75rem}.mt-9{margin-top:2.25rem}.mb-1\.5{margin-bottom:0.375rem}.mt-2\.5{margin-top:0.625rem}.line-clamp-1{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.aspect-\[4\/5\]{aspect-ratio:4/5}.h-10{height:2.5rem}.h-2{height:0.5rem}.h-28{height:7rem}.h-4{height:1rem}.h-56{height:14rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-\[1px\]{height:1px}.h-full{height:100%}.max-h-\[70vh\]{max-height:70vh}.min-h-screen{min-height:100vh}.w-1\/2{width:50%}.w-10{width:2.5rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-4{width:1rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-full{width:100%}.max-w-\[320px\]{max-width:320px}.max-w-\[360px\]{max-width:360px}.max-w-\[480px\]{max-width:480px}.max-w-full{max-width:100%}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.resize-none{resize:none}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.grid-cols-7{grid-template-columns:repeat(7, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-3\.5{gap:0.875rem}.gap-6{gap:1.5rem}.gap-y-2{row-gap:0.5rem}.gap-y-2\.5{row-gap:0.625rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.divide-x > :not([hidden]) ~ :not([hidden]){--tw-divide-x-reverse:0;border-right-width:calc(1px * var(--tw-divide-x-reverse));border-left-width:calc(1px * calc(1 - var(--tw-divide-x-reverse)))}.divide-sand > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(234 226 214 / var(--tw-divide-opacity, 1))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.whitespace-pre-line{white-space:pre-line}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-gold{--tw-border-opacity:1;border-color:rgb(200 169 126 / var(--tw-border-opacity, 1))}.border-gold\/35{border-color:rgb(200 169 126 / 0.35)}.border-gold\/40{border-color:rgb(200 169 126 / 0.4)}.border-gold\/45{border-color:rgb(200 169 126 / 0.45)}.border-gold\/60{border-color:rgb(200 169 126 / 0.6)}.border-sand{--tw-border-opacity:1;border-color:rgb(234 226 214 / var(--tw-border-opacity, 1))}.border-sand\/60{border-color:rgb(234 226 214 / 0.6)}.border-sand\/70{border-color:rgb(234 226 214 / 0.7)}.border-sand\/80{border-color:rgb(234 226 214 / 0.8)}.bg-\[\#03C75A\]{--tw-bg-opacity:1;background-color:rgb(3 199 90 / var(--tw-bg-opacity, 1))}.bg-\[\#F0266E\]{--tw-bg-opacity:1;background-color:rgb(240 38 110 / var(--tw-bg-opacity, 1))}.bg-\[\#F3EFE6\]{--tw-bg-opacity:1;background-color:rgb(243 239 230 / var(--tw-bg-opacity, 1))}.bg-\[\#FEE500\]{--tw-bg-opacity:1;background-color:rgb(254 229 0 / var(--tw-bg-opacity, 1))}.bg-black\/40{background-color:rgb(0 0 0 / 0.4)}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-black\/90{background-color:rgb(0 0 0 / 0.9)}.bg-cream{--tw-bg-opacity:1;background-color:rgb(253 251 247 / var(--tw-bg-opacity, 1))}.bg-deepbrown\/90{background-color:rgb(58 46 38 / 0.9)}.bg-deepbrown\/95{background-color:rgb(58 46 38 / 0.95)}.bg-gold{--tw-bg-opacity:1;background-color:rgb(200 169 126 / var(--tw-bg-opacity, 1))}.bg-ivory{--tw-bg-opacity:1;background-color:rgb(247 243 235 / var(--tw-bg-opacity, 1))}.bg-ivory\/50{background-color:rgb(247 243 235 / 0.5)}.bg-ivory\/60{background-color:rgb(247 243 235 / 0.6)}.bg-ivory\/70{background-color:rgb(247 243 235 / 0.7)}.bg-ivory\/75{background-color:rgb(247 243 235 / 0.75)}.bg-ivory\/80{background-color:rgb(247 243 235 / 0.8)}.bg-sand{--tw-bg-opacity:1;background-color:rgb(234 226 214 / var(--tw-bg-opacity, 1))}.bg-warmbrown{--tw-bg-opacity:1;background-color:rgb(92 77 66 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/15{background-color:rgb(255 255 255 / 0.15)}.bg-white\/60{background-color:rgb(255 255 255 / 0.6)}.bg-white\/75{background-color:rgb(255 255 255 / 0.75)}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-white\/85{background-color:rgb(255 255 255 / 0.85)}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.bg-white\/95{background-color:rgb(255 255 255 / 0.95)}.bg-black\/0{background-color:rgb(0 0 0 / 0)}.bg-gradient-to-l{background-image:linear-gradient(to left, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-t{background-image:linear-gradient(to top, var(--tw-gradient-stops))}.from-black\/25{--tw-gradient-from:rgb(0 0 0 / 0.25) var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-transparent{--tw-gradient-from:transparent var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 0 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-transparent{--tw-gradient-to:rgb(0 0 0 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), transparent var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-gold{--tw-gradient-to:#C8A97E var(--tw-gradient-to-position)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.object-center{object-position:center}.p-1\.5{padding:0.375rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-7{padding:1.75rem}.p-2{padding:0.5rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-7{padding-left:1.75rem;padding-right:1.75rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-14{padding-top:3.5rem;padding-bottom:3.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.pb-12{padding-bottom:3rem}.pb-14{padding-bottom:3.5rem}.pb-2{padding-bottom:0.5rem}.pb-24{padding-bottom:6rem}.pb-3{padding-bottom:0.75rem}.pt-1{padding-top:0.25rem}.pt-2{padding-top:0.5rem}.pt-6{padding-top:1.5rem}.pt-7{padding-top:1.75rem}.pt-8{padding-top:2rem}.text-left{text-align:left}.text-center{text-align:center}.font-eng{font-family:"Cormorant Garamond", serif}.font-sans{font-family:"Pretendard", -apple-system, BlinkMacSystemFont, sans-serif}.font-serif{font-family:"Gowun Batang", "Noto Serif KR", serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-5xl{font-size:3rem;line-height:1}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[15\.5px\]{font-size:15.5px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-\[2\.0\]{line-height:2.0}.leading-\[2\.15\]{line-height:2.15}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.tracking-\[0\.25em\]{letter-spacing:0.25em}.tracking-\[0\.28em\]{letter-spacing:0.28em}.tracking-\[0\.2em\]{letter-spacing:0.2em}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-widest{letter-spacing:0.1em}.text-\[\#191919\]{--tw-text-opacity:1;color:rgb(25 25 25 / var(--tw-text-opacity, 1))}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-blush{--tw-text-opacity:1;color:rgb(232 197 184 / var(--tw-text-opacity, 1))}.text-cream{--tw-text-opacity:1;color:rgb(253 251 247 / var(--tw-text-opacity, 1))}.text-deepbrown{--tw-text-opacity:1;color:rgb(58 46 38 / var(--tw-text-opacity, 1))}.text-gold{--tw-text-opacity:1;color:rgb(200 169 126 / var(--tw-text-opacity, 1))}.text-gold\/30{color:rgb(200 169 126 / 0.3)}.text-mutedbrown{--tw-text-opacity:1;color:rgb(140 123 110 / var(--tw-text-opacity, 1))}.text-mutedbrown\/70{color:rgb(140 123 110 / 0.7)}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133 / var(--tw-text-opacity, 1))}.text-sand{--tw-text-opacity:1;color:rgb(234 226 214 / var(--tw-text-opacity, 1))}.text-warmbrown{--tw-text-opacity:1;color:rgb(92 77 66 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-white\/90{color:rgb(255 255 255 / 0.9)}.opacity-0{opacity:0}.opacity-60{opacity:0.6}.opacity-90{opacity:0.9}.opacity-100{opacity:1}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.ring-4{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-gold\/30{--tw-ring-color:rgb(200 169 126 / 0.3)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-1000{transition-duration:1000ms}.duration-300{transition-duration:300ms}.duration-700{transition-duration:700ms}.selection\:bg-sand *::selection{--tw-bg-opacity:1;background-color:rgb(234 226 214 / var(--tw-bg-opacity, 1))}.selection\:text-deepbrown *::selection{--tw-text-opacity:1;color:rgb(58 46 38 / var(--tw-text-opacity, 1))}.selection\:bg-sand::selection{--tw-bg-opacity:1;background-color:rgb(234 226 214 / var(--tw-bg-opacity, 1))}.selection\:text-deepbrown::selection{--tw-text-opacity:1;color:rgb(58 46 38 / var(--tw-text-opacity, 1))}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-gold:hover{--tw-border-opacity:1;border-color:rgb(200 169 126 / var(--tw-border-opacity, 1))}.hover\:bg-black\/70:hover{background-color:rgb(0 0 0 / 0.7)}.hover\:bg-cream:hover{--tw-bg-opacity:1;background-color:rgb(253 251 247 / var(--tw-bg-opacity, 1))}.hover\:bg-ivory:hover{--tw-bg-opacity:1;background-color:rgb(247 243 235 / var(--tw-bg-opacity, 1))}.hover\:bg-rose-500\/80:hover{background-color:rgb(244 63 94 / 0.8)}.hover\:bg-sand\/60:hover{background-color:rgb(234 226 214 / 0.6)}.hover\:bg-warmbrown:hover{--tw-bg-opacity:1;background-color:rgb(92 77 66 / var(--tw-bg-opacity, 1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.hover\:bg-white\/30:hover{background-color:rgb(255 255 255 / 0.3)}.hover\:bg-white\/90:hover{background-color:rgb(255 255 255 / 0.9)}.hover\:text-deepbrown:hover{--tw-text-opacity:1;color:rgb(58 46 38 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:brightness-95:hover{--tw-brightness:brightness(.95);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.focus\:border-gold:focus{--tw-border-opacity:1;border-color:rgb(200 169 126 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.group:hover .group-hover\:scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:bg-black\/15{background-color:rgb(0 0 0 / 0.15)}.group:hover .group-hover\:opacity-100{opacity:1}@media (min-width: 640px){.sm\:p-8{padding:2rem}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}</style></head>
+<body class="min-h-screen flex justify-center selection:bg-sand selection:text-deepbrown">
+
+    <!-- Floating Warm Bokeh & Petals Canvas -->
+    <canvas id="petal-canvas" width="361" height="640"></canvas>
+
+    <!-- Mobile Card Container (Max 480px) -->
+    <main id="app-container" class="w-full max-w-[480px] paper-texture min-h-screen shadow-2xl relative pb-24 overflow-hidden">
+
+        <!-- Top Floating Controls (Music & Edit Mode Toggle) -->
+        <div class="sticky top-4 z-40 flex justify-between items-center px-5 pointer-events-none">
+            <!-- Edit Mode Banner/Badge -->
+            <div id="edit-badge" class="pointer-events-auto bg-deepbrown/90 backdrop-blur-md text-cream text-xs font-sans px-3.5 py-1.5 rounded-full shadow-lg hidden items-center gap-1.5">
+                <i class="ph-fill ph-pencil-simple text-gold"></i>
+                <span>문구를 터치하여 바로 수정하세요</span>
+            </div>
+            <div class="flex-1"></div>
+            <div class="flex items-center gap-2 pointer-events-auto">
+                <button id="bgm-btn" onclick="toggleAudio()" title="배경음악 켜기/끄기" class="w-9 h-9 rounded-full bg-white/80 backdrop-blur-md border border-sand shadow-sm flex items-center justify-center text-warmbrown hover:scale-105 transition">
+                    <i id="bgm-icon" class="ph ph-speaker-slash text-lg"></i>
+                </button>
+                <button id="edit-toggle-btn" onclick="toggleEditMode()" class="px-3.5 h-9 rounded-full bg-white/85 backdrop-blur-md border border-sand shadow-sm flex items-center gap-1.5 text-xs font-sans font-medium text-warmbrown hover:bg-ivory transition">
+                    <i id="edit-icon" class="ph ph-sliders-horizontal text-sm"></i>
+                    <span id="edit-btn-text">초대장 편집</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 1. HERO / MAIN COVER SECTION -->
+        <section class="pt-6 pb-14 px-7 text-center relative">
+            <!-- Top English Typography -->
+            <div class="mb-6">
+                <p class="font-eng tracking-[0.28em] text-xs uppercase text-mutedbrown mb-2">First Birthday Invitation</p>
+                <div class="flex items-center justify-center gap-3 text-deepbrown">
+                    <span class="h-[1px] w-8 bg-sand"></span>
+                    <span id="hero-date-badge" contenteditable="false" class="font-eng italic text-lg tracking-widest text-warmbrown">2026. 12. 12. SAT PM 02:00</span>
+                    <span class="h-[1px] w-8 bg-sand"></span>
+                </div>
+            </div>
+
+            <!-- Main Baby Photo in Arch Frame -->
+            <div class="relative mx-auto max-w-[360px] group">
+                <!-- Decorative subtle double border -->
+                <div class="absolute -inset-2.5 border border-gold/35 arch-frame pointer-events-none"></div>
+                
+                <div class="arch-frame overflow-hidden bg-ivory relative aspect-[4/5]">
+                    <img id="main-hero-img" src="image_385d1f.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&amp;fit=crop&amp;w=900&amp;q=80';" alt="김아진 첫 돌 메인 사진" class="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105">
+                    
+                    <!-- Soft Vignette Overlay at Bottom -->
+                    <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none"></div>
+
+                    <!-- Change Main Photo Button -->
+                    <label for="main-photo-input" id="main-photo-Trigger" class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md text-deepbrown font-sans text-xs px-3.5 py-2 rounded-full shadow-md flex items-center gap-1.5 cursor-pointer hover:bg-white transition opacity-90">
+                        <i class="ph ph-camera-rotate text-sm text-warmbrown"></i>
+                        <span>메인 사진 변경</span>
+                    </label>
+                    <input type="file" id="main-photo-input" accept="image/*" class="hidden" onchange="handleMainPhotoChange(event)">
+                </div>
+            </div>
+
+            <!-- Baby Name & Subtitle -->
+            <div class="mt-9 space-y-2">
+                <p class="text-xs tracking-[0.2em] text-mutedbrown">사랑스러운 우리 아기</p>
+                <h1 class="text-2xl sm:text-3xl font-normal tracking-wide text-deepbrown flex items-center justify-center gap-1.5">
+                    <span id="baby-name-title" contenteditable="false" class="font-bold">김아진</span>
+                    <span class="text-lg font-normal text-warmbrown">의 첫 번째 생일</span>
+                </h1>
+                <p id="hero-venue-summary" contenteditable="false" class="font-sans text-xs text-mutedbrown pt-1 tracking-wide">
+                    다이닝몽드 (한강DIMC테라타워 B1층) · 오후 2시
+                </p>
+            </div>
+        </section>
+
+        <!-- Ornamental Divider -->
+        <div class="flex items-center justify-center py-4 opacity-60">
+            <span class="h-[1px] w-16 bg-gradient-to-r from-transparent to-gold"></span>
+            <i class="ph-fill ph-flower-lotus text-gold mx-3 text-base"></i>
+            <span class="h-[1px] w-16 bg-gradient-to-l from-transparent to-gold"></span>
+        </div>
+
+        <!-- 2. EMOTIONAL QUOTE & INVITATION MESSAGE SECTION -->
+        <section class="py-12 px-8 text-center reveal active">
+            <!-- Leaf / Sprout Icon -->
+            <div class="w-10 h-10 rounded-full bg-ivory border border-sand flex items-center justify-center mx-auto mb-7 text-gold animate-soft-bounce">
+                <i class="ph-fill ph-sparkle text-lg"></i>
+            </div>
+
+            <p class="font-eng italic text-sm tracking-[0.2em] text-gold mb-6">365 Days of Love</p>
+
+            <!-- Core Emotional Message Requested by User -->
+            <div class="relative bg-ivory/75 border border-sand/80 rounded-3xl p-7 sm:p-8 shadow-sm">
+                <span class="font-eng text-5xl text-gold/30 absolute top-3 left-5 select-none">“</span>
+                
+                <div id="emotional-poem" contenteditable="false" class="text-[15.5px] sm:text-base leading-[2.15] text-deepbrown tracking-tight font-serif whitespace-pre-line relative z-10">사람은 태어나는 순간 울음을 터뜨리지만,
+웃음은 사랑을 배우며 피어나는가 봅니다.
+
+소리 내어 크게 웃던 너의 그날,
+작은 몸에서 터져 나온 웃음소리는
+우리에게 세상에서 가장 큰 행복이 되었단다.
+
+살아가다 보면 울고 싶은 날도 있겠지만,
+그럴 때마다 너를 웃게 해주는 사랑이
+언제나 네 곁에 머물기를.
+
+그리고 네가 누군가에게도
+그런 따뜻한 웃음이 되어주기를.
+
+<strong class="font-bold text-deepbrown">너의 첫 번째 생일, 우리가 함께 웃는 오늘.</strong></div>
+
+                <span class="font-eng text-5xl text-gold/30 absolute bottom-0 right-5 select-none leading-none">”</span>
+            </div>
+
+            <!-- Sub Invitation Greeting -->
+            <div id="sub-greeting" contenteditable="false" class="mt-9 text-sm leading-[2.0] text-warmbrown whitespace-pre-line">세상에 태어나 처음 마주한 사계절 동안
+건강하고 밝은 아이로 자라주었습니다.
+그동안 따뜻한 눈길로 아진이를 아껴주신 분들을 모시고
+작은 감사의 자리를 마련하고자 합니다.
+바쁘시더라도 오셔서 아진이의 첫걸음을 축복해 주세요.</div>
+
+            <!-- Parents Info & Quick Contact Modal Trigger -->
+            <div class="mt-10 pt-7 border-t border-sand/70 flex flex-col items-center gap-3">
+                <div class="flex items-center gap-6 text-sm text-deepbrown">
+                    <div>
+                        <span class="text-xs text-mutedbrown mr-1.5">아빠</span>
+                        <strong id="dad-name" contenteditable="false" class="font-semibold">아진 아빠</strong>
+                    </div>
+                    <span class="text-sand">·</span>
+                    <div>
+                        <span class="text-xs text-mutedbrown mr-1.5">엄마</span>
+                        <strong id="mom-name" contenteditable="false" class="font-semibold">아진 엄마</strong>
+                    </div>
+                </div>
+                <button onclick="openContactModal()" class="mt-2 px-5 py-2 rounded-full border border-gold/60 bg-white/80 text-xs font-sans text-warmbrown hover:bg-ivory transition flex items-center gap-1.5 shadow-sm">
+                    <i class="ph ph-phone-call text-sm text-gold"></i>
+                    <span>부모님께 연락하기</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 3. BABY PROFILE MINI CARD -->
+        <section class="py-10 px-7 reveal active">
+            <div class="bg-white/80 border border-sand rounded-3xl p-6 shadow-sm">
+                <div class="text-center mb-5">
+                    <p class="font-eng tracking-[0.2em] text-xs uppercase text-gold">About Our Baby</p>
+                    <h2 class="text-lg font-semibold text-deepbrown mt-1">주인공 아진이를 소개합니다</h2>
+                </div>
+                <div class="grid grid-cols-3 gap-3 text-center font-sans">
+                    <div class="bg-ivory/70 rounded-2xl p-3.5">
+                        <i class="ph-fill ph-baby text-gold text-xl mb-1"></i>
+                        <p class="text-[11px] text-mutedbrown">이름</p>
+                        <p id="profile-name" contenteditable="false" class="text-xs font-semibold text-deepbrown mt-0.5">김아진 (A-Jin)</p>
+                    </div>
+                    <div class="bg-ivory/70 rounded-2xl p-3.5">
+                        <i class="ph-fill ph-heart text-blush text-xl mb-1"></i>
+                        <p class="text-[11px] text-mutedbrown">매력 포인트</p>
+                        <p id="profile-charm" contenteditable="false" class="text-xs font-semibold text-deepbrown mt-0.5">반달 눈웃음</p>
+                    </div>
+                    <div class="bg-ivory/70 rounded-2xl p-3.5">
+                        <i class="ph-fill ph-star text-gold text-xl mb-1"></i>
+                        <p class="text-[11px] text-mutedbrown">좋아하는 것</p>
+                        <p id="profile-like" contenteditable="false" class="text-xs font-semibold text-deepbrown mt-0.5">까꿍놀이 · 노래</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CALENDAR & D-DAY SECTION -->
+        <section class="py-12 px-7 text-center reveal bg-ivory/60 border-y border-sand/60">
+            <p class="font-eng tracking-[0.25em] text-xs uppercase text-gold">Calendar</p>
+            <h2 id="calendar-date-title" contenteditable="false" class="text-xl font-semibold text-deepbrown mt-1.5">2026년 12월 12일 토요일</h2>
+            <p id="calendar-time-subtitle" contenteditable="false" class="text-sm text-warmbrown mt-1">오후 2시 00분</p>
+
+            <!-- Date Picker Helper in Edit Mode -->
+            <div id="date-picker-wrapper" class="mt-3 justify-center items-center gap-2 font-sans text-xs hidden">
+                <span class="text-warmbrown">행사 날짜 선택:</span>
+                <input type="date" id="event-date-input" value="2026-12-12" onchange="updateCalendarFromInput()" class="border border-gold rounded px-2 py-1 bg-white text-deepbrown">
+            </div>
+
+            <!-- Visual Monthly Calendar Grid -->
+            <div class="mt-7 max-w-[320px] mx-auto bg-white/90 rounded-2xl p-5 border border-sand/80 shadow-sm font-sans">
+                <div id="calendar-month-label" class="font-eng text-xl font-semibold text-deepbrown mb-4 tracking-widest">DECEMBER 2026</div>
+                <div class="grid grid-cols-7 gap-y-2 text-xs font-medium border-b border-sand/60 pb-2 mb-2">
+                    <span class="text-rose-400">일</span>
+                    <span class="text-mutedbrown">월</span>
+                    <span class="text-mutedbrown">화</span>
+                    <span class="text-mutedbrown">수</span>
+                    <span class="text-mutedbrown">목</span>
+                    <span class="text-mutedbrown">금</span>
+                    <span class="text-blue-400">토</span>
+                </div>
+                <div id="calendar-days-grid" class="grid grid-cols-7 gap-y-2.5 text-xs text-deepbrown items-center"></div>
+            </div>
+
+            <!-- D-Day Counter Box -->
+            <div class="mt-7 inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full border border-sand shadow-sm text-xs sm:text-sm">
+                <i class="ph-fill ph-confetti text-gold text-base"></i>
+                <span id="dday-text" class="text-warmbrown">아진이의 첫 생일파티까지 <strong class="text-deepbrown font-sans font-semibold">D-30</strong> 남았습니다.</span>
+            </div>
+        </section>
+
+        <!-- 5. LOCATION / DIRECTIONS SECTION (오시는 길) -->
+        <section class="py-14 px-7 reveal">
+            <div class="text-center mb-7">
+                <p class="font-eng tracking-[0.25em] text-xs uppercase text-gold">Location</p>
+                <h2 class="text-xl font-semibold text-deepbrown mt-1">오시는 길</h2>
+            </div>
+
+            <!-- Venue Name & Address Card -->
+            <div class="bg-white border border-sand rounded-3xl overflow-hidden shadow-sm">
+                <div class="p-6 text-center">
+                    <h3 id="venue-name" contenteditable="false" class="text-lg font-bold text-deepbrown">다이닝몽드 (한강DIMC테라타워 B1층)</h3>
+                    <p id="venue-address" contenteditable="false" class="font-sans text-xs sm:text-sm text-mutedbrown mt-1.5">경기 남양주시 다산지금로 202 한강DIMC테라타워 B1층 다이닝몽드</p>
+                    <p id="venue-tel" contenteditable="false" class="font-sans text-xs text-gold mt-1">2026년 12월 12일 (토) 오후 2시</p>
+
+                    <div class="mt-4 flex justify-center gap-2 font-sans">
+                        <button onclick="copyAddress()" class="px-4 py-2 rounded-full bg-ivory hover:bg-sand/60 text-xs text-warmbrown font-medium flex items-center gap-1.5 transition">
+                            <i class="ph ph-copy text-sm"></i>
+                            <span>주소 복사하기</span>
+                        </button>
+                        <button onclick="openMapSearch('naver')" class="px-4 py-2 rounded-full bg-ivory hover:bg-sand/60 text-xs text-warmbrown font-medium flex items-center gap-1.5 transition">
+                            <i class="ph ph-map-pin text-sm text-gold"></i>
+                            <span>지도 크게 보기</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Aesthetic Illustrated Map Preview (Dasan Jingum-ro / Han River DIMC Terra Tower) -->
+                <div class="relative h-56 bg-[#F3EFE6] border-y border-sand overflow-hidden flex items-center justify-center">
+                    <!-- Custom Aesthetic SVG Map Canvas -->
+                    <svg class="w-full h-full object-cover" viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="220" fill="#F2ECE1"></rect>
+                        <!-- Han River & Greenery Accents -->
+                        <path d="M-10 195 Q 180 175 410 205 L 410 230 L -10 230 Z" fill="#DCE6E7"></path>
+                        <circle cx="70" cy="45" r="55" fill="#E3E8DC"></circle>
+                        <circle cx="340" cy="60" r="50" fill="#E3E8DC"></circle>
+                        <!-- Main Roads (Dasan Jingum-ro & Gangbyeonbuk-ro direction) -->
+                        <path d="M-20 130 Q 190 125 420 115" stroke="#FFFFFF" stroke-width="18"></path>
+                        <path d="M200 -10 L 200 220" stroke="#FFFFFF" stroke-width="15"></path>
+                        <path d="M70 -10 L 115 220" stroke="#FAF7F2" stroke-width="8"></path>
+                        <!-- Road Labels -->
+                        <text x="95" y="122" fill="#8C7B6E" font-size="9" font-family="Pretendard, sans-serif" font-weight="600">다산지금로</text>
+                        <rect x="142" y="150" width="116" height="20" rx="10" fill="#8C7B6E"></rect>
+                        <text x="200" y="163" fill="#FFFFFF" font-size="9" font-family="Pretendard, sans-serif" text-anchor="middle" font-weight="600">한강DIMC테라타워 B1층</text>
+                        <!-- Surrounding Building Blocks -->
+                        <rect x="235" y="42" width="60" height="36" rx="6" fill="#E5DDD0"></rect>
+                        <rect x="115" y="50" width="52" height="38" rx="6" fill="#E5DDD0"></rect>
+                        <!-- Animated Pulse Marker -->
+                        <circle cx="200" cy="105" r="24" fill="#C8A97E" fill-opacity="0.25">
+                            <animate attributeName="r" values="16;28;16" dur="2.5s" repeatCount="indefinite"></animate>
+                            <animate attributeName="fill-opacity" values="0.4;0.1;0.4" dur="2.5s" repeatCount="indefinite"></animate>
+                        </circle>
+                        <!-- Pin Icon -->
+                        <path d="M200 72C189.5 72 181 80.5 181 91C181 105.25 200 122 200 122C200 122 219 105.25 219 91C219 80.5 210.5 72 200 72Z" fill="#5C4D42"></path>
+                        <circle cx="200" cy="91" r="6.5" fill="#FDFBF7"></circle>
+                    </svg>
+
+                    <!-- Floating Label on Map -->
+                    <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-md border border-sand flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
+                        <span id="map-pin-label" class="font-sans text-xs font-semibold text-deepbrown">다이닝몽드 (한강DIMC테라타워 B1층)</span>
+                    </div>
+                </div>
+
+                <!-- Quick Navigation App Buttons -->
+                <div class="grid grid-cols-3 divide-x divide-sand bg-ivory/50 font-sans text-xs font-medium text-deepbrown">
+                    <button onclick="openMapSearch('naver')" class="py-3.5 flex items-center justify-center gap-1.5 hover:bg-ivory transition">
+                        <span class="w-4 h-4 rounded bg-[#03C75A] text-white flex items-center justify-center font-bold text-[10px]">N</span>
+                        <span>네이버 지도</span>
+                    </button>
+                    <button onclick="openMapSearch('kakao')" class="py-3.5 flex items-center justify-center gap-1.5 hover:bg-ivory transition">
+                        <span class="w-4 h-4 rounded bg-[#FEE500] text-[#191919] flex items-center justify-center font-bold text-[10px]">K</span>
+                        <span>카카오맵</span>
+                    </button>
+                    <button onclick="openMapSearch('tmap')" class="py-3.5 flex items-center justify-center gap-1.5 hover:bg-ivory transition">
+                        <span class="w-4 h-4 rounded bg-[#F0266E] text-white flex items-center justify-center font-bold text-[10px]">T</span>
+                        <span>티맵 안내</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Transport Details Cards -->
+            <div class="mt-5 space-y-3 font-sans">
+                <div class="bg-white/75 border border-sand/80 rounded-2xl p-4 flex gap-3.5 items-start">
+                    <div class="w-8 h-8 rounded-full bg-ivory flex items-center justify-center text-warmbrown shrink-0 mt-0.5">
+                        <i class="ph-fill ph-car text-base"></i>
+                    </div>
+                    <div class="text-xs leading-relaxed">
+                        <p class="font-semibold text-deepbrown mb-0.5">자가용 및 주차 안내</p>
+                        <p id="parking-info" contenteditable="false" class="text-mutedbrown">내비게이션에 '한강DIMC테라타워' 또는 '다이닝몽드' 검색 · 건물 내 지하주차장 주차 후 B1층으로 이동 (무료 주차 지원)</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/75 border border-sand/80 rounded-2xl p-4 flex gap-3.5 items-start">
+                    <div class="w-8 h-8 rounded-full bg-ivory flex items-center justify-center text-warmbrown shrink-0 mt-0.5">
+                        <i class="ph-fill ph-train text-base"></i>
+                    </div>
+                    <div class="text-xs leading-relaxed">
+                        <p class="font-semibold text-deepbrown mb-0.5">대중교통 이용 시</p>
+                        <p id="subway-info" contenteditable="false" class="text-mutedbrown">경의중앙선 도농역 또는 8호선 다산역 하차 후 버스/택시 이동 (한강DIMC테라타워 하차)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PHOTO GALLERY & PHOTO UPLOAD SECTION (하단 사진 첨부 및 구경하기) -->
+        <section class="py-14 px-7 reveal bg-ivory/50 border-t border-sand/60">
+            <div class="text-center mb-6">
+                <p class="font-eng tracking-[0.25em] text-xs uppercase text-gold">Our Little Miracle</p>
+                <h2 class="text-xl font-semibold text-deepbrown mt-1">열두 달의 성장 앨범</h2>
+                <p class="font-sans text-xs text-mutedbrown mt-1.5">사진을 터치하면 크게 구경하실 수 있어요</p>
+            </div>
+
+            <!-- Upload / Attach New Photos Action Bar -->
+            <div class="mb-6 flex items-center justify-between bg-white/90 border border-gold/40 rounded-2xl p-3.5 shadow-sm">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-ivory flex items-center justify-center text-gold">
+                        <i class="ph-fill ph-images text-xl"></i>
+                    </div>
+                    <div class="font-sans text-left">
+                        <p class="text-xs font-semibold text-deepbrown">아기 사진 첨부하기</p>
+                        <p class="text-[11px] text-mutedbrown">앨범에 예쁜 순간들을 자유롭게 추가해보세요</p>
+                    </div>
+                </div>
+                <label for="gallery-upload-input" class="btn-warm text-cream font-sans text-xs font-medium px-4 py-2.5 rounded-xl cursor-pointer flex items-center gap-1.5 shrink-0 shadow-sm">
+                    <i class="ph-bold ph-plus text-xs"></i>
+                    <span>사진 추가</span>
+                </label>
+                <input type="file" id="gallery-upload-input" accept="image/*" multiple="" class="hidden" onchange="handleGalleryUpload(event)">
+            </div>
+
+            <!-- Filter / View Mode Tabs -->
+            <div class="flex justify-between items-center mb-4 font-sans text-xs text-mutedbrown px-1">
+                <span>전체 사진 <strong id="photo-count" class="text-deepbrown">4</strong>장</span>
+                <div class="flex gap-1.5">
+                    <button onclick="setGalleryLayout('grid')" id="layout-grid-btn" class="p-1.5 rounded-lg bg-warmbrown text-white transition" title="격자 보기">
+                        <i class="ph ph-squares-four text-sm"></i>
+                    </button>
+                    <button onclick="setGalleryLayout('magazine')" id="layout-mag-btn" class="p-1.5 rounded-lg bg-white border border-sand text-warmbrown transition" title="매거진 크게 보기">
+                        <i class="ph ph-rows text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Photo Gallery Container -->
+            <div id="gallery-grid" class="grid grid-cols-2 gap-3.5"></div>
+
+            <!-- Additional Dropzone Box at the bottom of Gallery -->
+            <label for="gallery-upload-input" class="mt-4 border-2 border-dashed border-gold/45 hover:border-gold bg-white/60 hover:bg-white/90 transition rounded-2xl p-5 flex flex-col items-center justify-center gap-1.5 cursor-pointer text-center group">
+                <div class="w-10 h-10 rounded-full bg-ivory group-hover:scale-110 transition flex items-center justify-center text-gold">
+                    <i class="ph ph-cloud-arrow-up text-xl"></i>
+                </div>
+                <p class="font-sans text-xs font-medium text-warmbrown">여기를 눌러 아진이의 사진을 더 첨부해 보세요</p>
+                <p class="font-sans text-[11px] text-mutedbrown">여러 장 동시 선택 가능 · 클릭 시 전체화면 슬라이드 지원</p>
+            </label>
+        </section>
+
+        <!-- 7. GUESTBOOK / BLESSING MESSAGES (축하 한마디) -->
+        <section class="py-14 px-7 reveal border-t border-sand/60">
+            <div class="text-center mb-7">
+                <p class="font-eng tracking-[0.25em] text-xs uppercase text-gold">Guestbook</p>
+                <h2 class="text-xl font-semibold text-deepbrown mt-1">따뜻한 축복의 한마디</h2>
+                <p class="font-sans text-xs text-mutedbrown mt-1">첫 번째 생일을 맞이한 아진이에게 축하글을 남겨주세요</p>
+            </div>
+
+            <!-- Message Input Form -->
+            <form onsubmit="addGuestbookMessage(event)" class="bg-white border border-sand rounded-3xl p-5 shadow-sm mb-6 font-sans space-y-3">
+                <div class="flex gap-2">
+                    <input type="text" id="guest-name" placeholder="성함 (예: 이모, 삼촌)" required="" maxlength="15" class="w-1/2 bg-ivory/70 border border-sand rounded-xl px-3.5 py-2.5 text-xs text-deepbrown focus:outline-none focus:border-gold">
+                    <input type="text" id="guest-relation" placeholder="축하 태그 (예: 아진아생일축하해💛)" maxlength="15" class="w-1/2 bg-ivory/70 border border-sand rounded-xl px-3.5 py-2.5 text-xs text-deepbrown focus:outline-none focus:border-gold">
+                </div>
+                <textarea id="guest-message" rows="2" placeholder="아진아, 첫 번째 생일을 진심으로 축하해! 늘 건강하고 따뜻한 웃음이 가득하길 바랄게." required="" maxlength="150" class="w-full bg-ivory/70 border border-sand rounded-xl px-3.5 py-2.5 text-xs text-deepbrown focus:outline-none focus:border-gold resize-none"></textarea>
+                <button type="submit" class="w-full btn-warm text-cream text-xs font-medium py-3 rounded-xl shadow-sm flex items-center justify-center gap-1.5">
+                    <i class="ph-fill ph-paper-plane-right text-sm"></i>
+                    <span>축하 메시지 남기기</span>
+                </button>
+            </form>
+
+            <!-- Guestbook Messages List -->
+            <div id="guestbook-list" class="space-y-3 font-sans"></div>
+        </section>
+
+        <!-- 8. FOOTER & SHARE BUTTONS -->
+        <footer class="pt-8 pb-12 px-7 text-center border-t border-sand/70 bg-ivory/80">
+            <div class="flex justify-center gap-3 mb-7 font-sans">
+                <button onclick="copyInvitationLink()" class="px-5 py-2.5 rounded-full bg-white border border-sand text-xs font-medium text-deepbrown shadow-sm hover:bg-cream transition flex items-center gap-1.5">
+                    <i class="ph ph-link text-sm text-gold"></i>
+                    <span>초대장 링크 복사</span>
+                </button>
+                <button onclick="shareInvitation()" class="px-5 py-2.5 rounded-full bg-[#FEE500] text-[#191919] text-xs font-semibold shadow-sm hover:brightness-95 transition flex items-center gap-1.5">
+                    <i class="ph-fill ph-chat-circle text-sm"></i>
+                    <span>카카오톡·공유하기</span>
+                </button>
+            </div>
+            <p class="font-eng italic text-sm text-mutedbrown tracking-widest">Thank you for being with us</p>
+            <p class="font-sans text-[11px] text-mutedbrown/70 mt-1">사랑으로 자라나는 첫 번째 계절의 기록</p>
+        </footer>
+
+    </main>
+
+    <!-- LIGHTBOX MODAL FOR PHOTO GALLERY -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex-col justify-between p-4 select-none">
+        <!-- Top Bar -->
+        <div class="flex justify-between items-center text-white/90 max-w-[480px] w-full mx-auto pt-2 px-2 font-sans">
+            <span id="lightbox-counter" class="text-xs tracking-widest">1 / 4</span>
+            <div class="flex items-center gap-2">
+                <button onclick="deleteCurrentPhoto()" id="lightbox-delete-btn" class="text-xs bg-white/15 hover:bg-rose-500/80 px-3 py-1.5 rounded-full transition flex items-center gap-1">
+                    <i class="ph ph-trash"></i>
+                    <span>삭제</span>
+                </button>
+                <button onclick="closeLightbox()" class="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center hover:bg-white/30 transition">
+                    <i class="ph ph-x text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Center Image & Prev/Next Controls -->
+        <div class="relative flex-1 flex items-center justify-center max-w-[480px] w-full mx-auto my-4 overflow-hidden">
+            <button onclick="changeLightboxSlide(-1)" class="absolute left-2 z-10 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/70 transition">
+                <i class="ph ph-caret-left text-xl"></i>
+            </button>
+
+            <div class="w-full h-full flex flex-col items-center justify-center px-2">
+                <img id="lightbox-img" src="" alt="갤러리 확대 사진" class="max-h-[70vh] max-w-full object-contain rounded-2xl shadow-2xl transition-all duration-300">
+                <p id="lightbox-caption" class="mt-4 text-sm text-cream font-serif text-center"></p>
+            </div>
+
+            <button onclick="changeLightboxSlide(1)" class="absolute right-2 z-10 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/70 transition">
+                <i class="ph ph-caret-right text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Bottom Thumbnail Strip -->
+        <div id="lightbox-thumbs" class="flex gap-2 justify-center overflow-x-auto max-w-[480px] w-full mx-auto pb-3 px-2">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- PARENTS CONTACT MODAL -->
+    <div id="contact-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-5">
+        <div class="bg-cream border border-sand rounded-3xl max-w-[360px] w-full p-6 shadow-2xl text-center animate-fade-in">
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-eng tracking-widest text-xs uppercase text-gold">Contact Parents</span>
+                <button onclick="closeContactModal()" class="text-mutedbrown hover:text-deepbrown">
+                    <i class="ph ph-x text-lg"></i>
+                </button>
+            </div>
+            <h3 class="text-base font-semibold text-deepbrown mb-5">부모님께 연락하기</h3>
+            
+            <div class="space-y-3 font-sans text-xs">
+                <div class="bg-ivory rounded-2xl p-4 flex items-center justify-between">
+                    <div class="text-left">
+                        <span class="text-mutedbrown block text-[11px]">아빠</span>
+                        <strong class="text-sm text-deepbrown">김아진 아빠</strong>
+                        <p class="text-mutedbrown mt-0.5">010-1234-5678</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="tel:01012345678" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition" target="_blank" rel="noopener noreferrer">
+                            <i class="ph-fill ph-phone text-sm"></i>
+                        </a>
+                        <a href="sms:01012345678" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition" target="_blank" rel="noopener noreferrer">
+                            <i class="ph-fill ph-chat-text text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-ivory rounded-2xl p-4 flex items-center justify-between">
+                    <div class="text-left">
+                        <span class="text-mutedbrown block text-[11px]">엄마</span>
+                        <strong class="text-sm text-deepbrown">김아진 엄마</strong>
+                        <p class="text-mutedbrown mt-0.5">010-9876-5432</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="tel:01098765432" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition" target="_blank" rel="noopener noreferrer">
+                            <i class="ph-fill ph-phone text-sm"></i>
+                        </a>
+                        <a href="sms:01098765432" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition" target="_blank" rel="noopener noreferrer">
+                            <i class="ph-fill ph-chat-text text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-deepbrown/95 text-cream font-sans text-xs px-5 py-3 rounded-full shadow-xl transition-all duration-300 pointer-events-none flex items-center gap-2 opacity-0">
+        <i class="ph-fill ph-check-circle text-gold text-base"></i>
+        <span id="toast-msg">편집 모드가 켜졌습니다. 원하는 문구를 터치해 수정하세요 ✏️</span>
+    </div>
+
+    <script>
+        /* ==========================================
+           1. STATE & INITIAL GALLERY DATA
+        ========================================== */
+        let isEditMode = false;
+        let galleryLayout = 'grid'; // 'grid' or 'magazine'
+        let currentLightboxIndex = 0;
+
+        // Initial Gallery Photos (Featuring Kim A-jin's main photo + warm moments)
+        let galleryPhotos = [
+            {
+                id: 1,
+                src: 'image_385d1f.jpg',
+                fallback: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80',
+                caption: '꽃보다 환하게 웃는 아진이의 첫 돌 기념 사진 🌷'
+            },
+            {
+                id: 2,
+                src: 'https://images.unsplash.com/photo-1544126592-807ade215a0b?auto=format&fit=crop&w=800&q=80',
+                fallback: 'https://placehold.co/600x750/F7F3EB/5C4D42?text=Sweet+Smile',
+                caption: '소리 내어 크게 웃던 그날, 우리에게 가장 큰 행복이 된 아진이'
+            },
+            {
+                id: 3,
+                src: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80',
+                fallback: 'https://placehold.co/600x750/F7F3EB/5C4D42?text=Little+Hands',
+                caption: '작고 소중한 손과 발, 사랑을 배우며 피어나는 미소'
+            },
+            {
+                id: 4,
+                src: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=800&q=80',
+                fallback: 'https://placehold.co/600x750/F7F3EB/5C4D42?text=First+Birthday',
+                caption: '너의 첫 번째 생일, 우리가 함께 웃는 오늘 🤍'
+            }
+        ];
+
+        // Initial Guestbook Messages
+        let guestMessages = [
+            {
+                name: '외할머니 & 외할아버지',
+                tag: '사랑하는 아진아💛',
+                text: '아진아, 세상에 태어나 이렇게 예쁜 웃음꽃을 피우기까지 건강하게 자라주어 고맙다. 첫 생일을 진심으로 축하해!',
+                date: '방금 전'
+            },
+            {
+                name: '이모 & 삼촌',
+                tag: '첫돌 축하해🎂',
+                text: '사진 속 환하게 웃는 아진이 모습이 정말 천사 같아요! 12월 12일 다이닝몽드에서 만나요~',
+                date: '1시간 전'
+            }
+        ];
+
+        /* ==========================================
+           2. GALLERY RENDER & UPLOAD LOGIC
+        ========================================== */
+        function renderGallery() {
+            const container = document.getElementById('gallery-grid');
+            const countEl = document.getElementById('photo-count');
+            countEl.textContent = galleryPhotos.length;
+
+            if (galleryLayout === 'grid') {
+                container.className = 'grid grid-cols-2 gap-3.5';
+            } else {
+                container.className = 'grid grid-cols-1 gap-5';
+            }
+
+            container.innerHTML = galleryPhotos.map((photo, index) => `
+                <div class="group relative bg-white p-2 pb-3 rounded-2xl border border-sand shadow-sm hover:shadow-md transition cursor-pointer overflow-hidden"
+                     onclick="openLightbox(${index})">
+                    <div class="${galleryLayout === 'grid' ? 'aspect-[4/5]' : 'aspect-[4/4]'} w-full rounded-xl overflow-hidden bg-ivory relative">
+                        <img src="${photo.src}" 
+                             onerror="this.onerror=null; this.src='${photo.fallback || 'https://placehold.co/600x750/F7F3EB/5C4D42?text=Baby+Photo'}';"
+                             alt="${photo.caption}" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition bg-white/90 text-deepbrown rounded-full w-9 h-9 flex items-center justify-center shadow">
+                                <i class="ph ph-arrows-out-simple text-base"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <p class="mt-2.5 px-1.5 text-xs text-warmbrown line-clamp-1 font-serif text-center">${photo.caption}</p>
+                </div>
+            `).join('');
+        }
+
+        function setGalleryLayout(mode) {
+            galleryLayout = mode;
+            const gridBtn = document.getElementById('layout-grid-btn');
+            const magBtn = document.getElementById('layout-mag-btn');
+
+            if (mode === 'grid') {
+                gridBtn.className = 'p-1.5 rounded-lg bg-warmbrown text-white transition';
+                magBtn.className = 'p-1.5 rounded-lg bg-white border border-sand text-warmbrown transition';
+            } else {
+                magBtn.className = 'p-1.5 rounded-lg bg-warmbrown text-white transition';
+                gridBtn.className = 'p-1.5 rounded-lg bg-white border border-sand text-warmbrown transition';
+            }
+            renderGallery();
+        }
+
+        // Handle Multiple Photos Upload from User Device
+        function handleGalleryUpload(event) {
+            const files = Array.from(event.target.files);
+            if (!files.length) return;
+
+            let loadedCount = 0;
+            files.forEach((file, idx) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const customCaption = promptForCaption(file.name, galleryPhotos.length + 1);
+                    galleryPhotos.unshift({
+                        id: Date.now() + idx,
+                        src: e.target.result,
+                        fallback: e.target.result,
+                        caption: customCaption
+                    });
+                    loadedCount++;
+                    if (loadedCount === files.length) {
+                        renderGallery();
+                        showToast(`${files.length}장의 사진이 갤러리에 추가되었습니다 ✨`);
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+            event.target.value = '';
+        }
+
+        function promptForCaption(filename, num) {
+            const warmCaptions = [
+                '사랑이 차곡차곡 쌓이는 오늘의 기록 🤍',
+                '세상에서 가장 해맑은 우리 아가 미소 ✨',
+                '엄마 아빠에게 와준 가장 큰 선물 🌷',
+                '행복이 묻어나는 소중한 순간 🌿'
+            ];
+            return warmCaptions[num % warmCaptions.length];
+        }
+
+        // Handle Main Cover Photo Replacement
+        function handleMainPhotoChange(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('main-hero-img').src = e.target.result;
+                // Also update first gallery photo if user wants
+                galleryPhotos[0].src = e.target.result;
+                renderGallery();
+                showToast('메인 대표 사진이 변경되었습니다 📸');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        /* ==========================================
+           3. LIGHTBOX VIEWER
+        ========================================== */
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightboxContent();
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function changeLightboxSlide(step) {
+            currentLightboxIndex = (currentLightboxIndex + step + galleryPhotos.length) % galleryPhotos.length;
+            updateLightboxContent();
+        }
+
+        function updateLightboxContent() {
+            if (!galleryPhotos.length) {
+                closeLightbox();
+                return;
+            }
+            const photo = galleryPhotos[currentLightboxIndex];
+            const imgEl = document.getElementById('lightbox-img');
+            imgEl.src = photo.src;
+            imgEl.onerror = function() {
+                this.src = photo.fallback || 'https://placehold.co/600x750/F7F3EB/5C4D42?text=Baby+Photo';
+            };
+            document.getElementById('lightbox-caption').textContent = photo.caption;
+            document.getElementById('lightbox-counter').textContent = `${currentLightboxIndex + 1} / ${galleryPhotos.length}`;
+
+            // Render Thumbnails
+            const thumbsContainer = document.getElementById('lightbox-thumbs');
+            thumbsContainer.innerHTML = galleryPhotos.map((p, i) => `
+                <button onclick="openLightbox(${i})" class="w-12 h-12 rounded-lg overflow-hidden border-2 transition shrink-0 ${i === currentLightboxIndex ? 'border-gold scale-105' : 'border-transparent opacity-50'}">
+                    <img src="${p.src}" onerror="this.src='${p.fallback}'" class="w-full h-full object-cover" />
+                </button>
+            `).join('');
+        }
+
+        function deleteCurrentPhoto() {
+            if (galleryPhotos.length <= 1) {
+                showToast('최소 1장의 사진은 남겨두어야 합니다.');
+                return;
+            }
+            galleryPhotos.splice(currentLightboxIndex, 1);
+            if (currentLightboxIndex >= galleryPhotos.length) {
+                currentLightboxIndex = 0;
+            }
+            renderGallery();
+            updateLightboxContent();
+            showToast('사진이 갤러리에서 삭제되었습니다.');
+        }
+
+        /* ==========================================
+           4. CALENDAR & D-DAY GENERATOR
+        ========================================== */
+        function renderCalendar(year, month, targetDay) {
+            const grid = document.getElementById('calendar-days-grid');
+            const monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+            document.getElementById('calendar-month-label').textContent = `${monthNames[month - 1]} ${year}`;
+
+            const firstDay = new Date(year, month - 1, 1).getDay();
+            const daysInMonth = new Date(year, month, 0).getDate();
+
+            let html = '';
+            for (let i = 0; i < firstDay; i++) {
+                html += `<span></span>`;
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayOfWeek = (firstDay + day - 1) % 7;
+                let textColor = 'text-deepbrown';
+                if (dayOfWeek === 0) textColor = 'text-rose-400';
+                if (dayOfWeek === 6) textColor = 'text-blue-400';
+
+                if (day === targetDay) {
+                    html += `
+                        <div class="relative flex items-center justify-center">
+                            <span class="w-8 h-8 rounded-full bg-warmbrown text-cream font-bold flex items-center justify-center shadow-md ring-4 ring-gold/30">${day}</span>
+                        </div>
+                    `;
+                } else {
+                    html += `<span class="py-1 ${textColor}">${day}</span>`;
+                }
+            }
+            grid.innerHTML = html;
+
+            // Calculate D-Day relative to current date
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const eventDate = new Date(year, month - 1, targetDay);
+            const diffTime = eventDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            const ddayEl = document.getElementById('dday-text');
+            if (diffDays > 0) {
+                ddayEl.innerHTML = `아진이의 첫 생일파티까지 <strong class="text-deepbrown font-sans font-semibold">D-${diffDays}</strong> 남았습니다.`;
+            } else if (diffDays === 0) {
+                ddayEl.innerHTML = `<strong class="text-deepbrown font-semibold">오늘이 바로 김아진의 첫 번째 생일날입니다! 🎉</strong>`;
+            } else {
+                ddayEl.innerHTML = `따뜻한 축복 속에 첫 생일(${Math.abs(diffDays)}일 전)을 맞이했습니다.`;
+            }
+        }
+
+        function updateCalendarFromInput() {
+            const val = document.getElementById('event-date-input').value;
+            if (!val) return;
+            const [y, m, d] = val.split('-').map(Number);
+            const daysKor = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+            const dow = daysKor[new Date(y, m - 1, d).getDay()];
+            document.getElementById('calendar-date-title').textContent = `${y}년 ${m}월 ${d}일 ${dow}`;
+            renderCalendar(y, m, d);
+            showToast('달력 날짜가 업데이트되었습니다 🗓️');
+        }
+
+        /* ==========================================
+           5. EDIT MODE TOGGLE (실시간 초대장 문구 수정)
+        ========================================== */
+        const editableIds = [
+            'hero-date-badge', 'baby-name-title', 'hero-venue-summary',
+            'emotional-poem', 'sub-greeting', 'dad-name', 'mom-name',
+            'profile-name', 'profile-charm', 'profile-like',
+            'calendar-date-title', 'calendar-time-subtitle',
+            'venue-name', 'venue-address', 'venue-tel',
+            'subway-info', 'parking-info'
+        ];
+
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const container = document.getElementById('app-container');
+            const badge = document.getElementById('edit-badge');
+            const btnText = document.getElementById('edit-btn-text');
+            const datePicker = document.getElementById('date-picker-wrapper');
+
+            if (isEditMode) {
+                container.classList.add('edit-mode');
+                badge.classList.remove('hidden');
+                datePicker.classList.remove('hidden');
+                datePicker.classList.add('flex');
+                btnText.textContent = '편집 완료';
+                editableIds.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.setAttribute('contenteditable', 'true');
+                });
+                showToast('편집 모드가 켜졌습니다. 원하는 문구를 터치해 수정하세요 ✏️');
+            } else {
+                container.classList.remove('edit-mode');
+                badge.classList.add('hidden');
+                datePicker.classList.add('hidden');
+                datePicker.classList.remove('flex');
+                btnText.textContent = '초대장 편집';
+                editableIds.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.setAttribute('contenteditable', 'false');
+                });
+                // Sync venue name to map pin
+                const vName = document.getElementById('venue-name').textContent;
+                document.getElementById('map-pin-label').textContent = vName;
+                showToast('수정하신 내용이 초대장에 반영되었습니다 ✨');
+            }
+        }
+
+        /* ==========================================
+           6. GUESTBOOK & MAP / SHARE UTILITIES
+        ========================================== */
+        function renderGuestbook() {
+            const list = document.getElementById('guestbook-list');
+            list.innerHTML = guestMessages.map(item => `
+                <div class="bg-white/85 border border-sand/80 rounded-2xl p-4 shadow-sm">
+                    <div class="flex justify-between items-center mb-1.5">
+                        <div class="flex items-center gap-2">
+                            <strong class="text-xs font-semibold text-deepbrown">${escapeHtml(item.name)}</strong>
+                            ${item.tag ? `<span class="text-[10px] bg-ivory text-warmbrown px-2 py-0.5 rounded-full border border-sand">${escapeHtml(item.tag)}</span>` : ''}
+                        </div>
+                        <span class="text-[10px] text-mutedbrown">${item.date}</span>
+                    </div>
+                    <p class="text-xs text-warmbrown leading-relaxed font-serif">${escapeHtml(item.text)}</p>
+                </div>
+            `).join('');
+        }
+
+        function addGuestbookMessage(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('guest-name');
+            const relInput = document.getElementById('guest-relation');
+            const msgInput = document.getElementById('guest-message');
+
+            guestMessages.unshift({
+                name: nameInput.value.trim(),
+                tag: relInput.value.trim() || '첫돌축하해💛',
+                text: msgInput.value.trim(),
+                date: '방금 전'
+            });
+
+            nameInput.value = '';
+            relInput.value = '';
+            msgInput.value = '';
+            renderGuestbook();
+            showToast('따뜻한 축하 메시지가 등록되었습니다 💌');
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>"']/g, function(m) {
+                return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[m];
+            });
+        }
+
+        function copyTextFallback(text, successMsg) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMsg);
+            } catch (err) {
+                showToast('복사에 실패했습니다.');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function copyAddress() {
+            const addr = document.getElementById('venue-address').textContent.trim();
+            copyTextFallback(addr, '장소 주소가 클립보드에 복사되었습니다 📋');
+        }
+
+        function copyInvitationLink() {
+            copyTextFallback(window.location.href, '모바일 초대장 링크가 복사되었습니다 🔗');
+        }
+
+        function shareInvitation() {
+            const babyName = document.getElementById('baby-name-title').textContent.trim();
+            if (navigator.share) {
+                navigator.share({
+                    title: `${babyName}의 첫 번째 생일에 초대합니다`,
+                    text: '더 많은 사랑을 차곡차곡 쌓아갈 우리 아기의 첫 돌잔치에 함께해 주세요.',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                copyInvitationLink();
+            }
+        }
+
+        function openMapSearch(provider) {
+            const query = encodeURIComponent('남양주 다산 한강DIMC테라타워 다이닝몽드');
+            let url = `https://map.naver.com/v5/search/${query}`;
+            if (provider === 'kakao') url = `https://map.kakao.com/link/search/${ encodeURIComponent('다이닝몽드') }`;
+            if (provider === 'tmap') {
+                showToast('티맵 길안내를 위해 다이닝몽드 위치를 검색합니다 🚗');
+                url = `https://map.naver.com/v5/search/${query}`;
+            }
+            window.open(url, '_blank');
+        }
+
+        function openContactModal() {
+            const m = document.getElementById('contact-modal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeContactModal() {
+            const m = document.getElementById('contact-modal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').textContent = msg;
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+            clearTimeout(window.toastTimer);
+            window.toastTimer = setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+            }, 2800);
+        }
+
+        /* ==========================================
+           7. GENTLE MUSIC BOX SYNTH (Web Audio API)
+        ========================================== */
+        let audioCtx = null;
+        let isPlayingAudio = false;
+        let bgmInterval = null;
+
+        function toggleAudio() {
+            const icon = document.getElementById('bgm-icon');
+            if (!isPlayingAudio) {
+                startMusicBox();
+                isPlayingAudio = true;
+                icon.className = 'ph-fill ph-speaker-high text-lg text-gold';
+                showToast('오르골 배경음악이 재생됩니다 🎵');
+            } else {
+                stopMusicBox();
+                isPlayingAudio = false;
+                icon.className = 'ph ph-speaker-slash text-lg';
+                showToast('배경음악이 일시정지되었습니다');
+            }
+        }
+
+        function startMusicBox() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            // Gentle lullaby / music box notes (frequencies in Hz)
+            const melody = [523.25, 659.25, 783.99, 659.25, 587.33, 698.46, 659.25, 523.25, 440.00, 523.25, 659.25, 587.33];
+            let step = 0;
+
+            const playNote = () => {
+                if (!isPlayingAudio) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(melody[step % melody.length], audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.05, audioCtx.currentTime + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.4);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.45);
+                step++;
+            };
+
+            playNote();
+            bgmInterval = setInterval(playNote, 750);
+        }
+
+        function stopMusicBox() {
+            clearInterval(bgmInterval);
+        }
+
+        /* ==========================================
+           8. FLOATING WARM PETALS / BOKEH CANVAS
+        ========================================== */
+        function initPetalsCanvas() {
+            const canvas = document.getElementById('petal-canvas');
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = Math.min(window.innerWidth, 480);
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = Math.min(window.innerWidth, 480);
+                height = canvas.height = window.innerHeight;
+            });
+
+            const particles = Array.from({ length: 18 }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                r: Math.random() * 3.5 + 1.8,
+                speedY: Math.random() * 0.4 + 0.2,
+                speedX: (Math.random() - 0.5) * 0.3,
+                angle: Math.random() * Math.PI * 2,
+                opacity: Math.random() * 0.35 + 0.15
+            }));
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.y += p.speedY;
+                    p.x += Math.sin(p.angle) * 0.3 + p.speedX;
+                    p.angle += 0.01;
+
+                    if (p.y > height + 10) {
+                        p.y = -10;
+                        p.x = Math.random() * width;
+                    }
+
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.fillStyle = `rgba(216, 185, 152, ${p.opacity})`;
+                    ctx.ellipse(p.x, p.y, p.r * 1.4, p.r, p.angle, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        /* ==========================================
+           9. SCROLL REVEAL & INITIALIZATION
+        ========================================== */
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        window.onload = function() {
+            renderCalendar(2026, 12, 12);
+            renderGallery();
+            renderGuestbook();
+            initScrollReveal();
+            initPetalsCanvas();
+        };
+    </script>
+
+</body></html>
