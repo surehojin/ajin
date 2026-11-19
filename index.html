@@ -13,6 +13,10 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web" crossorigin="anonymous"></script>
 
+    <!-- Firebase (방명록 저장용) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -610,21 +614,51 @@
             }
         ];
 
-        // Initial Guestbook Messages
-        let guestMessages = [
-            {
-                name: '외할머니 & 외할아버지',
-                tag: '사랑하는 아진아💛',
-                text: '아진아, 세상에 태어나 이렇게 예쁜 웃음꽃을 피우기까지 건강하게 자라주어 고맙다. 첫 생일을 진심으로 축하해!',
-                date: '방금 전'
-            },
-            {
-                name: '이모 & 삼촌',
-                tag: '첫돌 축하해🎂',
-                text: '사진 속 환하게 웃는 아진이 모습이 정말 천사 같아요! 12월 12일 다이닝몽드에서 만나요~',
-                date: '1시간 전'
+        // Firebase 설정: Firebase 콘솔 > 프로젝트 설정 > 내 앱(웹)에서 복사한 값으로 교체하세요
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        let guestMessages = [];
+        let db = null;
+
+        function initGuestbookDB() {
+            try {
+                firebase.initializeApp(firebaseConfig);
+                db = firebase.firestore();
+                // 실시간 구독: 저장된 메시지를 불러오고, 새 메시지가 생기면 자동 갱신
+                db.collection('guestbook').orderBy('createdAt', 'desc').limit(200).onSnapshot(snap => {
+                    guestMessages = snap.docs.map(d => {
+                        const v = d.data({ serverTimestamps: 'estimate' });
+                        return {
+                            name: v.name || '',
+                            tag: v.tag || '',
+                            text: v.text || '',
+                            createdAt: v.createdAt ? v.createdAt.toDate() : new Date()
+                        };
+                    });
+                    renderGuestbook();
+                }, err => {
+                    console.error(err);
+                    showToast('메시지를 불러오지 못했어요. 잠시 후 다시 시도해주세요.');
+                });
+            } catch (e) {
+                console.error(e);
             }
-        ];
+        }
+
+        function formatGuestDate(d) {
+            const diff = Math.floor((Date.now() - d.getTime()) / 1000);
+            if (diff < 60) return '방금 전';
+            if (diff < 3600) return `${Math.floor(diff / 60)}분 전`;
+            if (diff < 86400) return `${Math.floor(diff / 3600)}시간 전`;
+            return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
+        }
 
         /* ==========================================
            2. GALLERY RENDER & UPLOAD LOGIC
@@ -826,6 +860,10 @@
         ========================================== */
         function renderGuestbook() {
             const list = document.getElementById('guestbook-list');
+            if (!guestMessages.length) {
+                list.innerHTML = '<p class="text-center text-xs text-mutedbrown py-4">첫 번째 축하 메시지를 남겨주세요 💌</p>';
+                return;
+            }
             list.innerHTML = guestMessages.map(item => `
                 <div class="bg-white/85 border border-sand/80 rounded-2xl p-4 shadow-sm">
                     <div class="flex justify-between items-center mb-1.5">
@@ -833,31 +871,43 @@
                             <strong class="text-xs font-semibold text-deepbrown">${escapeHtml(item.name)}</strong>
                             ${item.tag ? `<span class="text-[10px] bg-ivory text-warmbrown px-2 py-0.5 rounded-full border border-sand">${escapeHtml(item.tag)}</span>` : ''}
                         </div>
-                        <span class="text-[10px] text-mutedbrown">${item.date}</span>
+                        <span class="text-[10px] text-mutedbrown">${formatGuestDate(item.createdAt)}</span>
                     </div>
                     <p class="text-xs text-warmbrown leading-relaxed font-serif">${escapeHtml(item.text)}</p>
                 </div>
             `).join('');
         }
 
-        function addGuestbookMessage(event) {
+        async function addGuestbookMessage(event) {
             event.preventDefault();
             const nameInput = document.getElementById('guest-name');
             const relInput = document.getElementById('guest-relation');
             const msgInput = document.getElementById('guest-message');
+            const btn = event.target.querySelector('button[type="submit"]');
 
-            guestMessages.unshift({
-                name: nameInput.value.trim(),
-                tag: relInput.value.trim() || '첫돌축하해💛',
-                text: msgInput.value.trim(),
-                date: '방금 전'
-            });
+            if (!db) {
+                showToast('저장소에 연결되지 않았어요. 새로고침 후 다시 시도해주세요.');
+                return;
+            }
 
-            nameInput.value = '';
-            relInput.value = '';
-            msgInput.value = '';
-            renderGuestbook();
-            showToast('따뜻한 축하 메시지가 등록되었습니다 💌');
+            btn.disabled = true;
+            try {
+                await db.collection('guestbook').add({
+                    name: nameInput.value.trim(),
+                    tag: relInput.value.trim() || '첫돌축하해💛',
+                    text: msgInput.value.trim(),
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                nameInput.value = '';
+                relInput.value = '';
+                msgInput.value = '';
+                showToast('따뜻한 축하 메시지가 등록되었습니다 💌');
+            } catch (e) {
+                console.error(e);
+                showToast('등록에 실패했어요. 잠시 후 다시 시도해주세요.');
+            } finally {
+                btn.disabled = false;
+            }
         }
 
         function escapeHtml(str) {
@@ -1005,6 +1055,7 @@
             renderCalendar(2026, 12, 12);
             renderGallery();
             renderGuestbook();
+            initGuestbookDB();
             initScrollReveal();
             initPetalsCanvas();
         };
