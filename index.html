@@ -6,7 +6,7 @@
     <title>소중한 김아진의 첫 번째 생일</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Gowun Batang (우아한 명조), Noto Serif KR, Pretendard -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;500;600&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -120,6 +120,10 @@
             transform: translateY(-1px);
             box-shadow: 0 8px 20px -6px rgba(78, 63, 53, 0.4);
         }
+
+        /* Hide scrollbar (slider, thumbnails) */
+        .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body class="min-h-screen flex justify-center selection:bg-sand selection:text-deepbrown">
@@ -146,10 +150,10 @@
             <div class="relative mx-auto max-w-[360px] group">
                 <!-- Decorative subtle double border -->
                 <div class="absolute -inset-2.5 border border-gold/35 arch-frame pointer-events-none"></div>
-                
+
                 <div class="arch-frame overflow-hidden bg-ivory relative aspect-[4/5]">
                     <img id="main-hero-img" src="picture/Main.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=900&q=80';" alt="김아진 첫 돌 메인 사진" class="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105">
-                    
+
                     <!-- Soft Vignette Overlay at Bottom -->
                     <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none"></div>
                 </div>
@@ -177,7 +181,6 @@
 
         <!-- 2. EMOTIONAL QUOTE & INVITATION MESSAGE SECTION -->
         <section class="py-12 px-8 text-center reveal active">
-            <!-- Leaf / Sprout Icon -->
             <div class="w-10 h-10 rounded-full bg-ivory border border-sand flex items-center justify-center mx-auto mb-7 text-gold animate-soft-bounce">
                 <i class="ph-fill ph-sparkle text-lg"></i>
             </div>
@@ -187,7 +190,7 @@
             <!-- Core Emotional Message -->
             <div class="relative bg-ivory/75 border border-sand/80 rounded-3xl p-7 sm:p-8 shadow-sm">
                 <span class="font-eng text-5xl text-gold/30 absolute top-3 left-5 select-none">“</span>
-                
+
                 <div id="emotional-poem" class="text-[15.5px] sm:text-base leading-[2.15] text-deepbrown tracking-tight font-serif whitespace-pre-line relative z-10">사람은 태어나는 순간 울음을 터뜨리지만,
 웃음은 사랑을 배우며 피어나는가 봅니다.
 
@@ -315,37 +318,29 @@
                     </div>
                 </div>
 
-                <!-- Aesthetic Illustrated Map Preview (Dasan Jingum-ro / Han River DIMC Terra Tower) -->
+                <!-- Aesthetic Illustrated Map Preview -->
                 <div class="relative h-56 bg-[#F3EFE6] border-y border-sand overflow-hidden flex items-center justify-center">
-                    <!-- Custom Aesthetic SVG Map Canvas -->
                     <svg class="w-full h-full object-cover" viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="400" height="220" fill="#F2ECE1"></rect>
-                        <!-- Han River & Greenery Accents -->
                         <path d="M-10 195 Q 180 175 410 205 L 410 230 L -10 230 Z" fill="#DCE6E7"></path>
                         <circle cx="70" cy="45" r="55" fill="#E3E8DC"></circle>
                         <circle cx="340" cy="60" r="50" fill="#E3E8DC"></circle>
-                        <!-- Main Roads (Dasan Jingum-ro & Gangbyeonbuk-ro direction) -->
                         <path d="M-20 130 Q 190 125 420 115" stroke="#FFFFFF" stroke-width="18"></path>
                         <path d="M200 -10 L 200 220" stroke="#FFFFFF" stroke-width="15"></path>
                         <path d="M70 -10 L 115 220" stroke="#FAF7F2" stroke-width="8"></path>
-                        <!-- Road Labels -->
                         <text x="95" y="122" fill="#8C7B6E" font-size="9" font-family="Pretendard, sans-serif" font-weight="600">다산지금로</text>
                         <rect x="142" y="150" width="116" height="20" rx="10" fill="#8C7B6E"></rect>
                         <text x="200" y="163" fill="#FFFFFF" font-size="9" font-family="Pretendard, sans-serif" text-anchor="middle" font-weight="600">한강DIMC테라타워 B1층</text>
-                        <!-- Surrounding Building Blocks -->
                         <rect x="235" y="42" width="60" height="36" rx="6" fill="#E5DDD0"></rect>
                         <rect x="115" y="50" width="52" height="38" rx="6" fill="#E5DDD0"></rect>
-                        <!-- Animated Pulse Marker -->
                         <circle cx="200" cy="105" r="24" fill="#C8A97E" fill-opacity="0.25">
                             <animate attributeName="r" values="16;28;16" dur="2.5s" repeatCount="indefinite"></animate>
                             <animate attributeName="fill-opacity" values="0.4;0.1;0.4" dur="2.5s" repeatCount="indefinite"></animate>
                         </circle>
-                        <!-- Pin Icon -->
                         <path d="M200 72C189.5 72 181 80.5 181 91C181 105.25 200 122 200 122C200 122 219 105.25 219 91C219 80.5 210.5 72 200 72Z" fill="#5C4D42"></path>
                         <circle cx="200" cy="91" r="6.5" fill="#FDFBF7"></circle>
                     </svg>
 
-                    <!-- Floating Label on Map -->
                     <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-md border border-sand flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
                         <span id="map-pin-label" class="font-sans text-xs font-semibold text-deepbrown">다이닝몽드 (한강DIMC테라타워 B1층)</span>
@@ -393,7 +388,7 @@
             </div>
         </section>
 
-        <!-- 6. PHOTO GALLERY & PHOTO UPLOAD SECTION (하단 사진 첨부 및 구경하기) -->
+        <!-- 6. PHOTO SLIDER -->
         <section class="py-14 px-7 reveal bg-ivory/50 border-t border-sand/60">
             <div class="text-center mb-6">
                 <p class="font-eng tracking-[0.25em] text-xs uppercase text-gold">Our Little Miracle</p>
@@ -401,48 +396,22 @@
                 <p class="font-sans text-xs text-mutedbrown mt-1.5">사진을 터치하면 크게 구경하실 수 있어요</p>
             </div>
 
-            <!-- Upload / Attach New Photos Action Bar -->
-            <div class="mb-6 flex items-center justify-between bg-white/90 border border-gold/40 rounded-2xl p-3.5 shadow-sm">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-ivory flex items-center justify-center text-gold">
-                        <i class="ph-fill ph-images text-xl"></i>
-                    </div>
-                    <div class="font-sans text-left">
-                        <p class="text-xs font-semibold text-deepbrown">아기 사진 첨부하기</p>
-                        <p class="text-[11px] text-mutedbrown">앨범에 예쁜 순간들을 자유롭게 추가해보세요</p>
-                    </div>
-                </div>
-                <label for="gallery-upload-input" class="btn-warm text-cream font-sans text-xs font-medium px-4 py-2.5 rounded-xl cursor-pointer flex items-center gap-1.5 shrink-0 shadow-sm">
-                    <i class="ph-bold ph-plus text-xs"></i>
-                    <span>사진 추가</span>
-                </label>
-                <input type="file" id="gallery-upload-input" accept="image/*" multiple="" class="hidden" onchange="handleGalleryUpload(event)">
+            <!-- Slider -->
+            <div class="relative">
+                <div id="slider-track" class="no-scrollbar flex overflow-x-auto snap-x snap-mandatory rounded-3xl"></div>
+
+                <button onclick="slideBy(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 text-deepbrown shadow flex items-center justify-center hover:bg-white transition">
+                    <i class="ph ph-caret-left text-lg"></i>
+                </button>
+                <button onclick="slideBy(1)" class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 text-deepbrown shadow flex items-center justify-center hover:bg-white transition">
+                    <i class="ph ph-caret-right text-lg"></i>
+                </button>
+
+                <div id="slider-counter" class="absolute bottom-5 right-5 bg-black/40 text-white font-sans text-[11px] tracking-widest px-3 py-1 rounded-full">1 / 20</div>
             </div>
 
-            <!-- Filter / View Mode Tabs -->
-            <div class="flex justify-between items-center mb-4 font-sans text-xs text-mutedbrown px-1">
-                <span>전체 사진 <strong id="photo-count" class="text-deepbrown">4</strong>장</span>
-                <div class="flex gap-1.5">
-                    <button onclick="setGalleryLayout('grid')" id="layout-grid-btn" class="p-1.5 rounded-lg bg-warmbrown text-white transition" title="격자 보기">
-                        <i class="ph ph-squares-four text-sm"></i>
-                    </button>
-                    <button onclick="setGalleryLayout('magazine')" id="layout-mag-btn" class="p-1.5 rounded-lg bg-white border border-sand text-warmbrown transition" title="매거진 크게 보기">
-                        <i class="ph ph-rows text-sm"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Photo Gallery Container -->
-            <div id="gallery-grid" class="grid grid-cols-2 gap-3.5"></div>
-
-            <!-- Additional Dropzone Box at the bottom of Gallery -->
-            <label for="gallery-upload-input" class="mt-4 border-2 border-dashed border-gold/45 hover:border-gold bg-white/60 hover:bg-white/90 transition rounded-2xl p-5 flex flex-col items-center justify-center gap-1.5 cursor-pointer text-center group">
-                <div class="w-10 h-10 rounded-full bg-ivory group-hover:scale-110 transition flex items-center justify-center text-gold">
-                    <i class="ph ph-cloud-arrow-up text-xl"></i>
-                </div>
-                <p class="font-sans text-xs font-medium text-warmbrown">여기를 눌러 아진이의 사진을 더 첨부해 보세요</p>
-                <p class="font-sans text-[11px] text-mutedbrown">여러 장 동시 선택 가능 · 클릭 시 전체화면 슬라이드 지원</p>
-            </label>
+            <!-- Thumbnails -->
+            <div id="slider-thumbs" class="no-scrollbar flex gap-2 overflow-x-auto mt-4 pb-1"></div>
         </section>
 
         <!-- 7. GUESTBOOK / BLESSING MESSAGES (축하 한마디) -->
@@ -492,16 +461,10 @@
     <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex-col justify-between p-4 select-none">
         <!-- Top Bar -->
         <div class="flex justify-between items-center text-white/90 max-w-[480px] w-full mx-auto pt-2 px-2 font-sans">
-            <span id="lightbox-counter" class="text-xs tracking-widest">1 / 4</span>
-            <div class="flex items-center gap-2">
-                <button onclick="deleteCurrentPhoto()" id="lightbox-delete-btn" class="text-xs bg-white/15 hover:bg-rose-500/80 px-3 py-1.5 rounded-full transition flex items-center gap-1">
-                    <i class="ph ph-trash"></i>
-                    <span>삭제</span>
-                </button>
-                <button onclick="closeLightbox()" class="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center hover:bg-white/30 transition">
-                    <i class="ph ph-x text-lg"></i>
-                </button>
-            </div>
+            <span id="lightbox-counter" class="text-xs tracking-widest">1 / 20</span>
+            <button onclick="closeLightbox()" class="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center hover:bg-white/30 transition">
+                <i class="ph ph-x text-lg"></i>
+            </button>
         </div>
 
         <!-- Center Image & Prev/Next Controls -->
@@ -511,8 +474,7 @@
             </button>
 
             <div class="w-full h-full flex flex-col items-center justify-center px-2">
-                <img id="lightbox-img" src="" alt="갤러리 확대 사진" class="max-h-[70vh] max-w-full object-contain rounded-2xl shadow-2xl transition-all duration-300">
-                <p id="lightbox-caption" class="mt-4 text-sm text-cream font-serif text-center"></p>
+                <img id="lightbox-img" src="" alt="갤러리 확대 사진" class="max-h-[75vh] max-w-full object-contain rounded-2xl shadow-2xl transition-all duration-300">
             </div>
 
             <button onclick="changeLightboxSlide(1)" class="absolute right-2 z-10 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/70 transition">
@@ -521,9 +483,7 @@
         </div>
 
         <!-- Bottom Thumbnail Strip -->
-        <div id="lightbox-thumbs" class="flex gap-2 justify-center overflow-x-auto max-w-[480px] w-full mx-auto pb-3 px-2">
-            <!-- Populated by JS -->
-        </div>
+        <div id="lightbox-thumbs" class="no-scrollbar flex gap-2 overflow-x-auto max-w-[480px] w-full mx-auto pb-3 px-2"></div>
     </div>
 
     <!-- PARENTS CONTACT MODAL -->
@@ -536,7 +496,7 @@
                 </button>
             </div>
             <h3 class="text-base font-semibold text-deepbrown mb-5">부모님께 연락하기</h3>
-            
+
             <div class="space-y-3 font-sans text-xs">
                 <div class="bg-ivory rounded-2xl p-4 flex items-center justify-between">
                     <div class="text-left">
@@ -581,38 +541,17 @@
 
     <script>
         /* ==========================================
-           1. STATE & INITIAL GALLERY DATA
+           1. STATE & PHOTO DATA (picture/a1 (1).jpg ~ a1 (20).jpg)
         ========================================== */
-        let galleryLayout = 'grid'; // 'grid' or 'magazine'
+        const PHOTO_COUNT = 20;
+        const PHOTO_EXT = 'jpg';
+
         let currentLightboxIndex = 0;
 
-        // Initial Gallery Photos (Featuring Kim A-jin's main photo + warm moments)
-        let galleryPhotos = [
-            {
-                id: 1,
-                src: 'picture/Main.jpg',
-                fallback: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80',
-                caption: '꽃보다 환하게 웃는 아진이의 첫 돌 기념 사진 🌷'
-            },
-            {
-                id: 2,
-                src: 'https://images.unsplash.com/photo-1544126592-807ade215a0b?auto=format&fit=crop&w=800&q=80',
-                fallback: 'https://placehold.co/600x750/F7F3EB/5C4D42?text=Sweet+Smile',
-                caption: '소리 내어 크게 웃던 그날, 우리에게 가장 큰 행복이 된 아진이'
-            },
-            {
-                id: 3,
-                src: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80',
-                fallback: 'https://placehold.co/600x750/F7F3EB/5C4D42?text=Little+Hands',
-                caption: '작고 소중한 손과 발, 사랑을 배우며 피어나는 미소'
-            },
-            {
-                id: 4,
-                src: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=800&q=80',
-                fallback: 'https://placehold.co/600x750/F7F3EB/5C4D42?text=First+Birthday',
-                caption: '너의 첫 번째 생일, 우리가 함께 웃는 오늘 🤍'
-            }
-        ];
+        const galleryPhotos = Array.from({ length: PHOTO_COUNT }, (_, i) => ({
+            id: i + 1,
+            src: encodeURI(`picture/a1 (${i + 1}).${PHOTO_EXT}`)
+        }));
 
         // Firebase 설정: Firebase 콘솔 > 프로젝트 설정 > 내 앱(웹)에서 복사한 값으로 교체하세요
         const firebaseConfig = {
@@ -661,88 +600,88 @@
         }
 
         /* ==========================================
-           2. GALLERY RENDER & UPLOAD LOGIC
+           2. PHOTO SLIDER
         ========================================== */
-        function renderGallery() {
-            const container = document.getElementById('gallery-grid');
-            const countEl = document.getElementById('photo-count');
-            countEl.textContent = galleryPhotos.length;
+        let sliderIndex = 0;
+        let sliderTimer = null;
 
-            if (galleryLayout === 'grid') {
-                container.className = 'grid grid-cols-2 gap-3.5';
-            } else {
-                container.className = 'grid grid-cols-1 gap-5';
-            }
+        function renderSlider() {
+            const track = document.getElementById('slider-track');
+            const thumbs = document.getElementById('slider-thumbs');
 
-            container.innerHTML = galleryPhotos.map((photo, index) => `
-                <div class="group relative bg-white p-2 pb-3 rounded-2xl border border-sand shadow-sm hover:shadow-md transition cursor-pointer overflow-hidden"
-                     onclick="openLightbox(${index})">
-                    <div class="${galleryLayout === 'grid' ? 'aspect-[4/5]' : 'aspect-[4/4]'} w-full rounded-xl overflow-hidden bg-ivory relative">
-                        <img src="${photo.src}" 
-                             onerror="this.onerror=null; this.src='${photo.fallback || 'https://placehold.co/600x750/F7F3EB/5C4D42?text=Baby+Photo'}';"
-                             alt="${photo.caption}" 
-                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition flex items-center justify-center">
-                            <span class="opacity-0 group-hover:opacity-100 transition bg-white/90 text-deepbrown rounded-full w-9 h-9 flex items-center justify-center shadow">
-                                <i class="ph ph-arrows-out-simple text-base"></i>
-                            </span>
+            track.innerHTML = galleryPhotos.map((p, i) => `
+                <div class="snap-center shrink-0 w-full cursor-pointer" onclick="openLightbox(${i})">
+                    <div class="bg-white p-2 rounded-3xl border border-sand shadow-sm">
+                        <div class="aspect-[4/5] w-full rounded-2xl overflow-hidden bg-ivory">
+                            <img src="${p.src}" alt="아진이 사진 ${i + 1}" loading="${i < 2 ? 'eager' : 'lazy'}" class="w-full h-full object-cover">
                         </div>
                     </div>
-                    <p class="mt-2.5 px-1.5 text-xs text-warmbrown line-clamp-1 font-serif text-center">${photo.caption}</p>
                 </div>
             `).join('');
-        }
 
-        function setGalleryLayout(mode) {
-            galleryLayout = mode;
-            const gridBtn = document.getElementById('layout-grid-btn');
-            const magBtn = document.getElementById('layout-mag-btn');
+            thumbs.innerHTML = galleryPhotos.map((p, i) => `
+                <button onclick="goToSlide(${i})" data-thumb="${i}" class="w-12 h-12 rounded-lg overflow-hidden border-2 shrink-0 transition ${i === 0 ? 'border-gold' : 'border-transparent opacity-50'}">
+                    <img src="${p.src}" loading="lazy" class="w-full h-full object-cover">
+                </button>
+            `).join('');
 
-            if (mode === 'grid') {
-                gridBtn.className = 'p-1.5 rounded-lg bg-warmbrown text-white transition';
-                magBtn.className = 'p-1.5 rounded-lg bg-white border border-sand text-warmbrown transition';
-            } else {
-                magBtn.className = 'p-1.5 rounded-lg bg-warmbrown text-white transition';
-                gridBtn.className = 'p-1.5 rounded-lg bg-white border border-sand text-warmbrown transition';
-            }
-            renderGallery();
-        }
-
-        // Handle Multiple Photos Upload from User Device
-        function handleGalleryUpload(event) {
-            const files = Array.from(event.target.files);
-            if (!files.length) return;
-
-            let loadedCount = 0;
-            files.forEach((file, idx) => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const customCaption = promptForCaption(file.name, galleryPhotos.length + 1);
-                    galleryPhotos.unshift({
-                        id: Date.now() + idx,
-                        src: e.target.result,
-                        fallback: e.target.result,
-                        caption: customCaption
-                    });
-                    loadedCount++;
-                    if (loadedCount === files.length) {
-                        renderGallery();
-                        showToast(`${files.length}장의 사진이 갤러리에 추가되었습니다 ✨`);
+            let ticking = false;
+            track.addEventListener('scroll', () => {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(() => {
+                    const idx = Math.round(track.scrollLeft / track.clientWidth);
+                    if (idx !== sliderIndex) {
+                        sliderIndex = Math.min(Math.max(idx, 0), galleryPhotos.length - 1);
+                        updateSliderUI();
                     }
-                };
-                reader.readAsDataURL(file);
+                    ticking = false;
+                });
             });
-            event.target.value = '';
+
+            // 자동 슬라이드 (터치/마우스 올리면 멈춤)
+            const startAuto = () => {
+                clearInterval(sliderTimer);
+                sliderTimer = setInterval(() => {
+                    goToSlide((sliderIndex + 1) % galleryPhotos.length);
+                }, 4000);
+            };
+            const stopAuto = () => clearInterval(sliderTimer);
+            track.addEventListener('touchstart', stopAuto, { passive: true });
+            track.addEventListener('touchend', startAuto);
+            track.addEventListener('mouseenter', stopAuto);
+            track.addEventListener('mouseleave', startAuto);
+            startAuto();
+
+            updateSliderUI();
         }
 
-        function promptForCaption(filename, num) {
-            const warmCaptions = [
-                '사랑이 차곡차곡 쌓이는 오늘의 기록 🤍',
-                '세상에서 가장 해맑은 우리 아가 미소 ✨',
-                '엄마 아빠에게 와준 가장 큰 선물 🌷',
-                '행복이 묻어나는 소중한 순간 🌿'
-            ];
-            return warmCaptions[num % warmCaptions.length];
+        function updateSliderUI() {
+            document.getElementById('slider-counter').textContent = `${sliderIndex + 1} / ${galleryPhotos.length}`;
+            const thumbs = document.getElementById('slider-thumbs');
+            thumbs.querySelectorAll('[data-thumb]').forEach(btn => {
+                const active = Number(btn.dataset.thumb) === sliderIndex;
+                btn.classList.toggle('border-gold', active);
+                btn.classList.toggle('border-transparent', !active);
+                btn.classList.toggle('opacity-50', !active);
+                if (active) {
+                    thumbs.scrollTo({
+                        left: btn.offsetLeft - thumbs.clientWidth / 2 + btn.clientWidth / 2,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+
+        function goToSlide(i, instant = false) {
+            const track = document.getElementById('slider-track');
+            sliderIndex = i;
+            track.scrollTo({ left: i * track.clientWidth, behavior: instant ? 'auto' : 'smooth' });
+            updateSliderUI();
+        }
+
+        function slideBy(step) {
+            goToSlide((sliderIndex + step + galleryPhotos.length) % galleryPhotos.length);
         }
 
         /* ==========================================
@@ -760,6 +699,7 @@
             const modal = document.getElementById('lightbox-modal');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
+            goToSlide(currentLightboxIndex, true); // 보던 사진 위치로 슬라이더 이동
         }
 
         function changeLightboxSlide(step) {
@@ -768,40 +708,15 @@
         }
 
         function updateLightboxContent() {
-            if (!galleryPhotos.length) {
-                closeLightbox();
-                return;
-            }
             const photo = galleryPhotos[currentLightboxIndex];
-            const imgEl = document.getElementById('lightbox-img');
-            imgEl.src = photo.src;
-            imgEl.onerror = function() {
-                this.src = photo.fallback || 'https://placehold.co/600x750/F7F3EB/5C4D42?text=Baby+Photo';
-            };
-            document.getElementById('lightbox-caption').textContent = photo.caption;
+            document.getElementById('lightbox-img').src = photo.src;
             document.getElementById('lightbox-counter').textContent = `${currentLightboxIndex + 1} / ${galleryPhotos.length}`;
 
-            // Render Thumbnails
-            const thumbsContainer = document.getElementById('lightbox-thumbs');
-            thumbsContainer.innerHTML = galleryPhotos.map((p, i) => `
+            document.getElementById('lightbox-thumbs').innerHTML = galleryPhotos.map((p, i) => `
                 <button onclick="openLightbox(${i})" class="w-12 h-12 rounded-lg overflow-hidden border-2 transition shrink-0 ${i === currentLightboxIndex ? 'border-gold scale-105' : 'border-transparent opacity-50'}">
-                    <img src="${p.src}" onerror="this.src='${p.fallback}'" class="w-full h-full object-cover" />
+                    <img src="${p.src}" class="w-full h-full object-cover" />
                 </button>
             `).join('');
-        }
-
-        function deleteCurrentPhoto() {
-            if (galleryPhotos.length <= 1) {
-                showToast('최소 1장의 사진은 남겨두어야 합니다.');
-                return;
-            }
-            galleryPhotos.splice(currentLightboxIndex, 1);
-            if (currentLightboxIndex >= galleryPhotos.length) {
-                currentLightboxIndex = 0;
-            }
-            renderGallery();
-            updateLightboxContent();
-            showToast('사진이 갤러리에서 삭제되었습니다.');
         }
 
         /* ==========================================
@@ -1053,7 +968,7 @@
 
         window.onload = function() {
             renderCalendar(2026, 12, 12);
-            renderGallery();
+            renderSlider();
             renderGuestbook();
             initGuestbookDB();
             initScrollReveal();
