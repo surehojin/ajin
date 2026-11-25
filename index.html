@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>소중한 김아진의 첫 번째 생일</title>
+
+    <!-- 공유 미리보기 (Open Graph) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="김아진의 첫 번째 생일에 초대합니다">
+    <meta property="og:description" content="2026년 12월 12일 (토) 오후 2시 · 다이닝몽드 (한강DIMC테라타워 B1층)">
+    <meta property="og:url" content="https://surehojin.github.io/ajin/">
+    <meta property="og:image" content="https://surehojin.github.io/ajin/picture/Main.jpg">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -12,6 +20,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;500;600&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web" crossorigin="anonymous"></script>
+
+    <!-- Kakao JavaScript SDK (카카오톡 공유용) -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" crossorigin="anonymous"></script>
 
     <!-- Firebase (방명록 저장용) -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -304,7 +315,7 @@
             <div class="bg-white border border-sand rounded-3xl overflow-hidden shadow-sm">
                 <div class="p-6 text-center">
                     <h3 id="venue-name" class="text-lg font-bold text-deepbrown">다이닝몽드 (한강DIMC테라타워 B1층)</h3>
-                    <p id="venue-address" class="font-sans text-xs sm:text-sm text-mutedbrown mt-1.5">경기 남양주시 다산지금로 202 한강DIMC테라타워 </br>B1층 다이닝몽드</p>
+                    <p id="venue-address" class="font-sans text-xs sm:text-sm text-mutedbrown mt-1.5">경기 남양주시 다산지금로 202 한강DIMC테라타워 <br>B1층 다이닝몽드</p>
                     <p id="venue-tel" class="font-sans text-xs text-gold mt-1">2026년 12월 12일 (토) 오후 2시</p>
 
                     <div class="mt-4 flex justify-center gap-2 font-sans">
@@ -344,7 +355,7 @@
 
                     <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-md border border-sand flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
-                        <span id="map-pin-label" class="font-sans text-xs font-semibold text-deepbrown">다이닝몽드 </br>(한강DIMC테라타워 B1층)</span>
+                        <span id="map-pin-label" class="font-sans text-xs font-semibold text-deepbrown">다이닝몽드 <br>(한강DIMC테라타워 B1층)</span>
                     </div>
                 </div>
 
@@ -503,13 +514,13 @@
                     <div class="text-left">
                         <span class="text-mutedbrown block text-[11px]">아빠</span>
                         <strong class="text-sm text-deepbrown">김아진 아빠</strong>
-                        <p class="text-mutedbrown mt-0.5">010-1234-5678</p>
+                        <p class="text-mutedbrown mt-0.5">010-6241-4895</p>
                     </div>
                     <div class="flex gap-2">
-                        <a href="tel:01012345678" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition" target="_blank" rel="noopener noreferrer">
+                        <a href="tel:01062414895" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition">
                             <i class="ph-fill ph-phone text-sm"></i>
                         </a>
-                        <a href="sms:01012345678" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition" target="_blank" rel="noopener noreferrer">
+                        <a href="sms:01062414895" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition">
                             <i class="ph-fill ph-chat-text text-sm"></i>
                         </a>
                     </div>
@@ -522,10 +533,10 @@
                         <p class="text-mutedbrown mt-0.5">010-7556-5241</p>
                     </div>
                     <div class="flex gap-2">
-                        <a href="tel:01075565241" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition" target="_blank" rel="noopener noreferrer">
+                        <a href="tel:01075565241" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition">
                             <i class="ph-fill ph-phone text-sm"></i>
                         </a>
-                        <a href="sms:01075565241" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition" target="_blank" rel="noopener noreferrer">
+                        <a href="sms:01075565241" class="w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center text-warmbrown hover:bg-warmbrown hover:text-white transition">
                             <i class="ph-fill ph-chat-text text-sm"></i>
                         </a>
                     </div>
@@ -564,6 +575,9 @@
             src: `picture/${encodeURIComponent(file)}`
         }));
 
+        // Kakao Developers > 내 애플리케이션 > 앱 키 > JavaScript 키로 교체하세요
+        const KAKAO_JS_KEY = 'YOUR_KAKAO_JAVASCRIPT_KEY';
+
         // Firebase 설정: Firebase 콘솔 > 프로젝트 설정 > 내 앱(웹)에서 복사한 값으로 교체하세요
         const firebaseConfig = {
             apiKey: "YOUR_API_KEY",
@@ -576,6 +590,12 @@
 
         let guestMessages = [];
         let db = null;
+
+        function initKakaoSDK() {
+            if (window.Kakao && !window.Kakao.isInitialized() && KAKAO_JS_KEY && KAKAO_JS_KEY !== 'YOUR_KAKAO_JAVASCRIPT_KEY') {
+                window.Kakao.init(KAKAO_JS_KEY);
+            }
+        }
 
         function initGuestbookDB() {
             try {
@@ -867,26 +887,56 @@
 
         function shareInvitation() {
             const babyName = document.getElementById('baby-name-title').textContent.trim();
+            const shareUrl = window.location.href;
+            const mainImgEl = document.getElementById('main-hero-img');
+            const imageUrl = mainImgEl ? mainImgEl.src : '';
+
+            // 1) Kakao JS 키가 설정되어 초기화된 경우 카카오톡 공유 직접 호출
+            if (window.Kakao && window.Kakao.isInitialized()) {
+                window.Kakao.Share.sendDefault({
+                    objectType: 'feed',
+                    content: {
+                        title: `${babyName}의 첫 번째 생일에 초대합니다`,
+                        description: '2026년 12월 12일 (토) 오후 2시 · 다이닝몽드 (한강DIMC테라타워 B1층)',
+                        imageUrl: imageUrl,
+                        link: {
+                            mobileWebUrl: shareUrl,
+                            webUrl: shareUrl
+                        }
+                    },
+                    buttons: [
+                        {
+                            title: '초대장 보기',
+                            link: {
+                                mobileWebUrl: shareUrl,
+                                webUrl: shareUrl
+                            }
+                        }
+                    ]
+                });
+                return;
+            }
+
+            // 2) Kakao 키 미설정 시 모바일 기본 공유 시트(카카오톡 선택 가능) 또는 링크 복사
             if (navigator.share) {
                 navigator.share({
                     title: `${babyName}의 첫 번째 생일에 초대합니다`,
                     text: '더 많은 사랑을 차곡차곡 쌓아갈 우리 아기의 첫 돌잔치에 함께해 주세요.',
-                    url: window.location.href
+                    url: shareUrl
                 }).catch(() => {});
             } else {
-                copyInvitationLink();
+                copyTextFallback(shareUrl, '모바일 초대장 링크가 복사되었습니다 🔗');
             }
         }
 
         function openMapSearch(provider) {
-            const query = encodeURIComponent('남양주 다산 한강DIMC테라타워 다이닝몽드');
-            let url = `https://map.naver.com/v5/search/${query}`;
-            if (provider === 'kakao') url = `https://map.kakao.com/link/search/${ encodeURIComponent('다이닝몽드') }`;
-            if (provider === 'tmap') {
-                showToast('티맵 길안내를 위해 다이닝몽드 위치를 검색합니다 🚗');
-                url = `https://map.naver.com/v5/search/${query}`;
-            }
-            window.open(url, '_blank');
+            const mapLinks = {
+                naver: 'https://naver.me/GkRvKFV0',
+                kakao: 'https://place.map.kakao.com/1888809785?fromAppLink=true',
+                tmap: 'https://tmap.life/762c19dc'
+            };
+            const url = mapLinks[provider] || mapLinks.naver;
+            window.open(url, '_blank', 'noopener,noreferrer');
         }
 
         function openContactModal() {
@@ -978,6 +1028,7 @@
         }
 
         window.onload = function() {
+            initKakaoSDK();
             renderCalendar(2026, 12, 12);
             renderSlider();
             renderGuestbook();
